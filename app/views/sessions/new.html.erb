@@ -1,0 +1,31 @@
+
+<div class="fondo-login">
+  <div class="card-panel  login">
+    <%= form_tag '/login' do %>
+    <br>
+    <div class="panel-body">
+       <p class="center enc">Inicia sesion para continuar.</p>
+       <% flash.each do |key, msg| %>
+        <%if key == "success"%>
+          <%= content_tag(:div, msg, :id => key,:class => "alert alert-#{key}") unless flash[key].blank?%>
+        <%else%>
+          <%= content_tag(:div, msg, :id => key,:class => "alert alert-danger") unless flash[key].blank?%>
+        <%end%>
+       <% end %> <br>
+    </div>
+      <div class="input-field">
+        <i class="material-icons prefix">email</i>
+         <%= email_field_tag :email %>
+      </div>
+      <div class="input-field">
+        <i class="material-icons prefix">lock</i>
+         <%= password_field_tag :password %>
+      </div>
+      <br>
+      <div class="action">
+        <%= submit_tag "Entrar", :class=>"btn btn-large light-green accent-4 center" %>
+      </div>
+
+    <%end%>
+  </div>
+</div>

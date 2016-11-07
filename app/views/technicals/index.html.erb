@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+
+
+<div class="container">
+  <h1>Tecnicos</h1>
+  <%= link_to 'Registrar tecnico', newTec_path, class:'btn' %>
+  <table class="striped">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Especialidad</th>
+        <th>Hora de entrada</th>
+        <th>Hora de salida</th>
+        <th>Correo</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @technicals.each do |technical| %>
+        <tr>
+          <% if technical.avatar.blank? %>
+            <td><img src="assets/usuario.png" alt="" class:"responsive-img" style="widht:50px; height:50px;" /></td>
+          <%else%>
+          <td><img src="<%=technical.avatar%>" alt="" class:"responsive-img" style="widht:50px; height:50px;"/></td>
+          <% end %>
+          <td><%= technical.name %></td>
+          <td><%= technical.especialidad %></td>
+          <td><%= technical.horaE.strftime("%X") %></td>
+          <td><%= technical.horaS.strftime("%X") %></td>
+          <td><%= technical.user.email %></td>
+          <td><%= link_to 'Show', technical %></td>
+          <td><%= link_to 'Edit', edit_technical_path(technical) %></td>
+          <td><%= link_to 'Destroy', technical, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @technical.name %>
+</p>
+
+<p>
+  <strong>Ststus:</strong>
+  <%= @technical.ststus %>
+</p>
+
+<p>
+  <strong>Especialidad:</strong>
+  <%= @technical.especialidad %>
+</p>
+
+<p>
+  <strong>Horae:</strong>
+  <%= @technical.horaE %>
+</p>
+
+<p>
+  <strong>Horas:</strong>
+  <%= @technical.horaS %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @technical.user %>
+</p>
+
+<%= link_to 'Edit', edit_technical_path(@technical) %> |
+<%= link_to 'Back', technicals_path %>

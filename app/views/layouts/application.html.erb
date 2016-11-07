@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PDI</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<% if current_user.blank? %>
+  <% else %>
+  <% if current_user.rol == "root" %>
+  <nav class="blue darken-2">
+      <div class="nav-wrapper ">
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><%=link_to "Home", :root%></li>
+          <% if current_user.blank? %>
+          <li><%=link_to "Login", login_path%></li>
+          <% else %>
+            <% if current_user.rol == "root" %>
+              <li><%=link_to "Usuarios", users_path%></li>
+              <li><%=link_to "Tecnicos", technicals_path%></li>
+              <li><%=link_to "Clientes", clients_path%></li>
+              <% else %>
+                <li><%= link_to "Perfil", perfil_path(current_user.clients.ids)%></li>
+                <li>Bienvenido: <%=current_user.email%></li>
+            <% end %>
+            <li><%= link_to "salir", logout_path, method: :get, data: { confirm: 'Estas seguro?' }%></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  <% end %>
+  <% if current_user.rol == "1" %>
+  <nav class="cliente">
+    <div class="nav-wrapper ">
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><%=link_to "Home", :root%></li>
+        <% if current_user.blank? %>
+        <li><%=link_to "Login", login_path%></li>
+        <% else %>
+          <% if current_user.rol == "root" %>
+            <li><%=link_to "Usuarios", users_path%></li>
+            <li><%=link_to "Tecnicos", technicals_path%></li>
+            <li><%=link_to "Clientes", clients_path%></li>
+            <% else %>
+              <li><%= link_to "Perfil", perfil_path(current_user.clients.ids)%></li>
+              <li>Bienvenido: <%=current_user.email%></li>
+          <% end %>
+          <li><%= link_to "salir", logout_path, method: :get, data: { confirm: 'Estas seguro?' }%></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+  <% end %>
+<% end %>
+<body>
+<%= yield %>
+</body>
+</html>

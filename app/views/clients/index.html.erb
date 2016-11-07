@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+  <h1>Clientes</h1>
+  <br>
+  <% if current_user.rol == "root" %>
+  <%=link_to "Nuevo cliente", newClient_path, class:'btn'%>
+  <br><br>
+  <table class="striped">
+    <thead>
+      <tr>
+        <th>Logo</th>
+        <th>Compañia</th>
+        <th>Contacto</th>
+        <th>Telefono</th>
+        <th>Correo</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @clients.each do |client| %>
+        <tr>
+          <% if client.avatar.blank? %>
+            <td><img src="assets/usuario.png" alt="" class:"responsive-img" style="widht:50px; height:50px;" /></td>
+          <%else%>
+          <td><img src="<%=client.avatar%>" alt="" class:"responsive-img" style="widht:50px; height:50px;"/></td>
+          <% end %>
+          <td><%= client.company %></td>
+          <td><%= client.contacto %></td>
+          <td><%= client.telefono %></td>
+          <td><%= client.user.email %></td>
+          <td><%= link_to 'Show', client %></td>
+          <td><%= link_to 'Edit', edit_client_path(client) %></td>
+          <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+</div>

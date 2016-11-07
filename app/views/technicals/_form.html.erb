@@ -1,0 +1,46 @@
+<script type="text/javascript">
+$(document).on('turbolinks:load', function() {
+  $('select').material_select();
+})
+</script>
+<%= form_for(@technical) do |f| %>
+  <% if @technical.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@technical.errors.count, "error") %> prohibited this technical from being saved:</h2>
+
+      <ul>
+      <% @technical.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.check_box :ststus %>
+    <%= f.label :ststus %><br>
+  </div>
+  <div class="field">
+    <%= f.label :especialidad %><br>
+    <%= f.text_field :especialidad %>
+  </div>
+  <div class="field">
+    <%= f.label :horaE %><br>
+    <%= f.time_field :horaE %>
+  </div>
+  <div class="field">
+    <%= f.label :horaS %><br>
+    <%= f.time_field :horaS %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

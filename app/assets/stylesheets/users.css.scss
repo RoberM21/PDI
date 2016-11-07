@@ -1,0 +1,33 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.input-field label {
+     color:white;
+     font-size: 18px;
+     text-align: center;
+     opacity: 0.5;
+   }
+   .input-field input[type=email]:focus {
+     border: 0px solid #000;
+     box-shadow: 0 0px 0 0 #000;
+
+   }
+   .input-field input[type=email]{
+     background: white;
+     color: black;
+     border-radius: 5px;
+   }
+   .input-field input[type=password]:focus {
+     border: 0px solid #000;
+     box-shadow: 0 0px 0 0 #000;
+
+   }
+   .input-field input[type=password]{
+     background: white;
+     color: black;
+     border-radius: 5px;
+   }
+   .input-field .prefix.active {
+     color: #64dd17;
+   }

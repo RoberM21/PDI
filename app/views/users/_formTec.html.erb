@@ -1,0 +1,70 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="field col s4">
+      <%= f.label :email %><br>
+      <%= f.email_field :email %>
+    </div>
+    <div class="field col s4">
+      <%= f.label :password %><br>
+      <%= f.password_field :password %>
+    </div>
+    <div class="field col s4">
+      <%= f.label :password_confirmation %><br>
+      <%= f.password_field :password_confirmation %>
+    </div>
+    <div class="field">
+      <%= f.hidden_field :token, :value => SecureRandom.urlsafe_base64.to_s%>
+    </div>
+    <div class="">
+      <%= f.hidden_field :rol, :value => "2"%>
+    </div>
+    <div class="">
+      <%= f.fields_for :technicals, @tec do |t| %>
+      <div class="field col s4">
+        <%= t.label :name %><br>
+        <%= t.text_field :name %>
+      </div>
+      <div class="field col s4">
+        <%= t.label :horaE %><br>
+        <%= t.time_field :horaE %>
+      </div>
+      <div class="field col s4">
+        <%= t.label :horaS %><br>
+        <%= t.time_field :horaS %>
+      </div>
+      <div class="field col s4">
+        <%= t.label :especialidad %><br>
+        <%= t.text_field :especialidad %>
+      </div>
+      <div class="col s4">
+        <label class="">Foto de perfil</label>
+        <div class="file-field input-field">
+          <i class="material-icons prefix">add_a_photo</i>
+            <%= t.file_field :avatar %>
+          <div class="file-path-wrapper" style="margin-left:30px; margin-top:-15px">
+            <input class="file-path " type="text">
+          </div>
+        </div>
+      </div>
+      <div class="field col s4">
+        <%= f.check_box :email_confirmed%>
+        <%= f.label :email_confirmed %><br>
+      </div>
+      <% end %>
+  </div>
+</div>
+  <%= f.submit "Guardar", class:'btn' %>
+</div>
+
+<% end %>
