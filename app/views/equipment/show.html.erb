@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Marca:</strong>
+  <%= @equipment.marca %>
+</p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @equipment.tipo %>
+</p>
+
+<p>
+  <strong>Garantia:</strong>
+  <%= @equipment.garantia %>
+</p>
+
+<p>
+  <strong>Entrada:</strong>
+  <%= @equipment.entrada %>
+</p>
+
+<%= link_to 'Edit', edit_equipment_path(@equipment) %> |
+<%= link_to 'Back', equipment_index_path %>

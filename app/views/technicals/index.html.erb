@@ -8,6 +8,7 @@
   <table class="striped">
     <thead>
       <tr>
+        <th>Perfil</th>
         <th>Nombre</th>
         <th>Especialidad</th>
         <th>Hora de entrada</th>
@@ -21,18 +22,16 @@
       <% @technicals.each do |technical| %>
         <tr>
           <% if technical.avatar.blank? %>
-            <td><img src="assets/usuario.png" alt="" class:"responsive-img" style="widht:50px; height:50px;" /></td>
+            <td><%=link_to image_tag("usuario.png", width: 50, height: 50), technical_path(technical.id)%></td>
           <%else%>
-          <td><img src="<%=technical.avatar%>" alt="" class:"responsive-img" style="widht:50px; height:50px;"/></td>
+          <td><%=link_to image_tag("technical.avatar", width: 50, height: 50), technical_path(technical.id)%></td>
           <% end %>
           <td><%= technical.name %></td>
           <td><%= technical.especialidad %></td>
           <td><%= technical.horaE.strftime("%X") %></td>
           <td><%= technical.horaS.strftime("%X") %></td>
           <td><%= technical.user.email %></td>
-          <td><%= link_to 'Show', technical %></td>
-          <td><%= link_to 'Edit', edit_technical_path(technical) %></td>
-          <td><%= link_to 'Destroy', technical, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Eliminar', technical, method: :delete, data: { confirm: '¿Seguro?' }, class:'btn red' %></td>
         </tr>
       <% end %>
     </tbody>

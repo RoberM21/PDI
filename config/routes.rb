@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :equipment
+  resources :incidences
   resources :clients
   resources :technicals
   get 'welcome/index'

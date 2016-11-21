@@ -1,0 +1,33 @@
+<%= form_for(@incidence) do |f| %>
+  <% if @incidence.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@incidence.errors.count, "error") %> prohibited this incidence from being saved:</h2>
+
+      <ul>
+      <% @incidence.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tipo %><br>
+    <%= f.text_field :tipo %>
+  </div>
+  <div class="field">
+    <%= f.label :prioridad %><br>
+    <%= f.text_field :prioridad %>
+  </div>
+  <div class="field">
+    <%= f.label :estado %><br>
+    <%= f.text_field :estado %>
+  </div>
+  <div class="field">
+    <%= f.label :comentario %><br>
+    <%= f.text_area :comentario %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

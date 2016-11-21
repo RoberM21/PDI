@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Incidences</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Tipo</th>
+      <th>Prioridad</th>
+      <th>Estado</th>
+      <th>Comentario</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @incidences.each do |incidence| %>
+      <tr>
+        <td><%= incidence.tipo %></td>
+        <td><%= incidence.prioridad %></td>
+        <td><%= incidence.estado %></td>
+        <td><%= incidence.comentario %></td>
+        <td><%= link_to 'Show', incidence %></td>
+        <td><%= link_to 'Edit', edit_incidence_path(incidence) %></td>
+        <td><%= link_to 'Destroy', incidence, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Incidence', new_incidence_path %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @incidence.tipo %>
+</p>
+
+<p>
+  <strong>Prioridad:</strong>
+  <%= @incidence.prioridad %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @incidence.estado %>
+</p>
+
+<p>
+  <strong>Comentario:</strong>
+  <%= @incidence.comentario %>
+</p>
+
+<%= link_to 'Edit', edit_incidence_path(@incidence) %> |
+<%= link_to 'Back', incidences_path %>
