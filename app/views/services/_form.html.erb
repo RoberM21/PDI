@@ -1,0 +1,51 @@
+<%= form_for(@service) do |f| %>
+  <% if @service.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
+
+      <ul>
+      <% @service.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <br>
+  <div class="row">
+    <div class="col s3"><%= f.label :prioridad,'Preoridad'%></div>
+      <div class="col s3">
+        <%= f.radio_button(:prioridad, 3)%>
+        <%= f.label :prioridad_3, 'Baja', class:'btn green'%>
+      </div>
+      <div class="col s3">
+        <%= f.radio_button(:prioridad, 2)%>
+        <%= f.label :prioridad_2, 'Media', class:'btn yellow darken-2' %>
+      </div>
+      <div class="col s3">
+        <%= f.radio_button(:prioridad, 1)%>
+        <%= f.label :prioridad_1, 'Alta',class:'btn red' %>
+      </div>
+    </div><br><br>
+<div class="row">
+  <div class="col s4">
+    <%= f.label :name,'Nombre' %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="col s4">
+    <%= f.label :area_id%>
+    <%= f.collection_select(:area_id, Area.all, :id, :name, { prompt: "Selecione una area" }) %>
+  </div>
+  <div class="col s2">
+    <%= f.label :respuesta %><br>
+    <%= f.time_field :respuesta %>
+  </div>
+  <div class="col s2">
+    <%= f.label :resolucion %><br>
+    <%= f.time_field :resolucion %>
+  </div>
+</div>
+<br>
+  <div class="actions">
+    <%= f.submit 'Guardar',class:'btn' %>
+  </div>
+<% end %>

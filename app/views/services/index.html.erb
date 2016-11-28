@@ -1,0 +1,32 @@
+<div class="container z-depth-3 panel">
+  <h3 class=" titulo">Servicios</h3>
+  <%= link_to 'Registrar', new_service_path, class:'btn bo' %>
+    <table class="striped centered" id="my-table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Prioridad</th>
+      <th>Respuesta</th>
+      <th>Resolucion</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @services.each do |service| %>
+      <tr>
+        <td><%= service.name %></td>
+        <td><%= service.prioridad %></td>
+        <td><%= service.respuesta.strftime("%X")%> Horas</td>
+        <td><%= service.resolucion.strftime("%X") %> Horas</td>
+        <td><%= link_to 'Eliminar', service, method: :delete, data: { confirm: 'Are you sure?' },class:'btn red' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#my-table').dynatable();
+  });
+</script>

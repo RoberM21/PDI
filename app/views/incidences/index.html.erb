@@ -1,8 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Incidences</h1>
-
-<table>
+<div class="container z-depth-3 panel">
+  <h3 class=" titulo">Incidencia</h3>
+  <%= link_to 'Registrar', new_incidence_path, class:'btn bo' %>
+    <table class="striped centered" id="my-table">
   <thead>
     <tr>
       <th>Tipo</th>
@@ -20,14 +19,16 @@
         <td><%= incidence.prioridad %></td>
         <td><%= incidence.estado %></td>
         <td><%= incidence.comentario %></td>
-        <td><%= link_to 'Show', incidence %></td>
-        <td><%= link_to 'Edit', edit_incidence_path(incidence) %></td>
-        <td><%= link_to 'Destroy', incidence, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', incidence, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn red' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Incidence', new_incidence_path %>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#my-table').dynatable();
+  });
+</script>

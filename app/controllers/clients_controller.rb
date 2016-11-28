@@ -7,7 +7,7 @@ class ClientsController < ApplicationController
     @clients = Client.all
   end
   def perfil
-    @clients = current_user.clients.last
+    @clients = current_user.clients
   end
   # GET /clients/1
   # GET /clients/1.json

@@ -7,7 +7,28 @@ html{
   margin:0;
   padding:0;
 }
-
+.fondo{
+  margin-top: -22px;
+}
+.striped{
+  background: white;
+}
+.bo{
+  margin-left: 20px;
+  margin-top: -90px;
+  display: inline-block;
+}
+.titulo{
+  text-align: center;
+  color: white;
+  padding: 14px 0px 15px 0px;
+  margin-bottom: -8px;
+  border-radius: 10px 10px 0px 0px;
+  background-color: rgba(48, 47, 57, 0.96);
+}
+.panel{
+  border-radius: 10px;
+}
 .cliente
 {
   background: #1f3864;
@@ -52,6 +73,24 @@ html{
    .input-field .prefix.active {
      color: #64dd17;
    }
+   [type="radio"]:checked + label:before {
+  border: 2px solid transparent;
+}
+
+[type="radio"]:checked + label:after,
+[type="radio"].with-gap:checked + label:before,
+[type="radio"].with-gap:checked + label:after {
+  border: white;
+}
+
+[type="radio"]:checked + label:after,
+[type="radio"].with-gap:checked + label:after {
+  background-color: white;
+}
+[type="radio"]:not(:checked) + label:before,
+[type="radio"]:not(:checked) + label:after {
+  border: 2px solid white;
+}
 .btn
 {
   border-radius: 5px;

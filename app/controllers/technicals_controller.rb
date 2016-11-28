@@ -69,6 +69,6 @@ class TechnicalsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def technical_params
-      params.require(:technical).permit(:name, :ststus, :especialidad, :horaE, :horaS, :user_id, :avatar)
+      params.require(:technical).permit(:name, :ststus, :horaE, :horaS, :user_id, :avatar,:area_id)
     end
 end

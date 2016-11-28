@@ -43,10 +43,6 @@
         <%= t.label :horaS %><br>
         <%= t.time_field :horaS %>
       </div>
-      <div class="field col s4">
-        <%= t.label :especialidad %><br>
-        <%= t.text_field :especialidad %>
-      </div>
       <div class="col s4">
         <label class="">Foto de perfil</label>
         <div class="file-field input-field">
@@ -56,6 +52,10 @@
             <input class="file-path " type="text">
           </div>
         </div>
+      </div>
+      <div class="fild col s4">
+        <%= t.label :area_id%>
+        <%= t.collection_select(:area_id, Area.all, :id, :name, { prompt: "Selecione una area" }) %>
       </div>
       <div class="field col s4">
         <%= f.check_box :email_confirmed%>

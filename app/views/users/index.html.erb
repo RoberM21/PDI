@@ -1,7 +1,7 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Users</h1>
-<table>
+<div class="container z-depth-3 panel">
+  <h3 class=" titulo">Usuarios</h3>
+  <%= link_to 'Registrar', new_user_path, class:'btn bo' %>
+    <table class="striped centered" id="my-table">
   <thead>
     <tr>
       <th>Email</th>
@@ -15,14 +15,15 @@
       <tr>
         <td><%= user.email %></td>
         <td><%= user.email_confirmed %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Eliminar', user, method: :delete, data: { confirm: 'Are you sure?' },class:'btn red' %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New User', new_user_path %>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#my-table').dynatable();
+  });
+</script>

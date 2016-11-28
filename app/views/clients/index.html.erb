@@ -1,11 +1,9 @@
-<p id="notice"><%= notice %></p>
-<div class="container">
-  <h1>Clientes</h1>
-  <br>
+<br>
+<div class="container z-depth-3 panel">
+<h3 class=" titulo">Clientes</h3>
+<%= link_to 'Registrar', newClient_path, class:'btn bo' %>
   <% if current_user.rol == "root" %>
-  <%=link_to "Nuevo cliente", newClient_path, class:'btn'%>
-  <br><br>
-  <table class="striped">
+  <table class="striped centered" id="my-table">
     <thead>
       <tr>
         <th>Logo</th>
@@ -13,7 +11,7 @@
         <th>Contacto</th>
         <th>Telefono</th>
         <th>Correo</th>
-        <th colspan="3"></th>
+        <th></th>
       </tr>
     </thead>
 
@@ -36,4 +34,10 @@
     </tbody>
   </table>
   <% end %>
+  <br>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#my-table').dynatable();
+  });
+</script>

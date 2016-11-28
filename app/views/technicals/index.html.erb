@@ -1,20 +1,17 @@
-<p id="notice"><%= notice %></p>
-
-
-
-<div class="container">
-  <h1>Tecnicos</h1>
-  <%= link_to 'Registrar tecnico', newTec_path, class:'btn' %>
-  <table class="striped">
+<br>
+  <div class="container z-depth-3 panel">
+    <h3 class=" titulo">Tecnico</h3>
+    <%= link_to 'Registrar', newTec_path, class:'btn bo' %>
+      <table class="striped centered" id="my-table">
     <thead>
       <tr>
         <th>Perfil</th>
         <th>Nombre</th>
-        <th>Especialidad</th>
-        <th>Hora de entrada</th>
-        <th>Hora de salida</th>
+        <!--<th>Hora de entrada</th>
+        <th>Hora de salida</th>-->
         <th>Correo</th>
-        <th colspan="3"></th>
+        <th>Area</th>
+        <th></th>
       </tr>
     </thead>
 
@@ -27,13 +24,19 @@
           <td><%=link_to image_tag("technical.avatar", width: 50, height: 50), technical_path(technical.id)%></td>
           <% end %>
           <td><%= technical.name %></td>
-          <td><%= technical.especialidad %></td>
-          <td><%= technical.horaE.strftime("%X") %></td>
-          <td><%= technical.horaS.strftime("%X") %></td>
+          <!--<td><%= technical.horaE.strftime("%X") %></td>
+          <td><%= technical.horaS.strftime("%X") %></td>-->
           <td><%= technical.user.email %></td>
+          <td><%= technical.area.name%></td>
           <td><%= link_to 'Eliminar', technical, method: :delete, data: { confirm: '¿Seguro?' }, class:'btn red' %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
+  <br>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#my-table').dynatable();
+  });
+</script>

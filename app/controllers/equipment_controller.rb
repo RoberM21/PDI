@@ -25,7 +25,7 @@ class EquipmentController < ApplicationController
   # POST /equipment.json
   def create
     @equipment = Equipment.new(equipment_params)
-
+    @equipment.entrada = Time.current
     respond_to do |format|
       if @equipment.save
         format.html { redirect_to @equipment, notice: 'Equipment was successfully created.' }
