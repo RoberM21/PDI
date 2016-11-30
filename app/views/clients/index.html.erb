@@ -19,9 +19,15 @@
       <% @clients.each do |client| %>
         <tr>
           <% if client.avatar.blank? %>
+          <%=link_to client_path(client.id) do%>
             <td><img src="assets/usuario.png" alt="" class:"responsive-img" style="widht:50px; height:50px;" /></td>
+            <%end%>
           <%else%>
-          <td><img src="<%=client.avatar%>" alt="" class:"responsive-img" style="widht:50px; height:50px;"/></td>
+          <td>
+            <%=link_to perfilC_path(client.id) do%>
+            <img src="<%=client.avatar%>" alt="" class:"responsive-img" style="widht:50px; height:50px;"/>
+            <%end%>
+          </td>
           <% end %>
           <td><%= client.company %></td>
           <td><%= client.contacto %></td>

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/perfil' => 'clients#perfil'
   get '/newClient' => 'users#clientNew'
   get '/newTec' => 'users#tecNew'
+  post '/clients/:id', to: 'clients#show', as: 'perfilC'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
