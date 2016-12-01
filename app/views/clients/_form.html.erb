@@ -1,3 +1,4 @@
+<%@client = Client.new%>
 <%= form_for(@client) do |f| %>
   <% if @client.errors.any? %>
     <div id="error_explanation">
@@ -28,6 +29,6 @@
     <%= f.text_field :user_id %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit  %>
   </div>
 <% end %>

@@ -69,6 +69,6 @@ class IncidencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def incidence_params
-      params.require(:incidence).permit(:tipo, :prioridad, :estado, :comentario, :service_id, :area_id)
+      params.require(:incidence).permit(:tipo, :prioridad, :estado, :comentario, :service_id, :area_id, :client_id, :technical_id)
     end
 end
