@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201183500) do
+ActiveRecord::Schema.define(version: 20161202002451) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -62,8 +62,8 @@ ActiveRecord::Schema.define(version: 20161201183500) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "area_id",    limit: 4
-    t.time     "respuesta"
     t.time     "resolucion"
+    t.time     "respuesta"
   end
 
   create_table "technicals", force: :cascade do |t|
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20161201183500) do
     t.integer  "avatar_file_size",    limit: 4
     t.datetime "avatar_updated_at"
     t.integer  "area_id",             limit: 4
+    t.integer  "client_id",           limit: 4
   end
 
   add_index "technicals", ["user_id"], name: "index_technicals_on_user_id", using: :btree

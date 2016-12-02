@@ -69,6 +69,6 @@ class EquipmentController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def equipment_params
-      params.require(:equipment).permit(:marca, :tipo, :garantia, :entrada)
+      params.require(:equipment).permit(:marca, :tipo, :garantia, :entrada, :client_id)
     end
 end

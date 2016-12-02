@@ -2,11 +2,20 @@
 html{
   width: 1280px;
   height: 720px;
+  margin: 0 auto;
 }
 
 *{
   margin:0;
   padding:0;
+}
+.titulo_form{
+  text-align: center;
+  color: white;
+  padding: 14px 0px 15px 0px;
+  margin-bottom: -8px;
+  border-radius: 10px 10px 0px 0px;
+  background-color: rgba(48, 47, 57, 0.96);
 }
 .fondo{
   margin-top: -22px;

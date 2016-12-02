@@ -4,7 +4,7 @@ class IncidencesController < ApplicationController
   # GET /incidences
   # GET /incidences.json
   def index
-    @incidences = Incidence.all
+    @incidences = current_user.clients.last.incidences
   end
 
   # GET /incidences/1
@@ -15,17 +15,21 @@ class IncidencesController < ApplicationController
   # GET /incidences/new
   def new
     @incidence = Incidence.new
+    @area = params[:area_id]
+    @servicios = Service.where(area_id: @area)
   end
 
   # GET /incidences/1/edit
   def edit
+    @area = params[:area_id]
+    @servicios = Service.where(area_id: @area)
   end
 
   # POST /incidences
   # POST /incidences.json
   def create
     @incidence = Incidence.new(incidence_params)
-
+    @incidence.client_id = current_user.clients.last.id
     respond_to do |format|
       if @incidence.save
         format.html { redirect_to @incidence, notice: 'Incidence was successfully created.' }

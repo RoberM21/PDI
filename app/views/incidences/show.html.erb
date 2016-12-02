@@ -1,9 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Tipo:</strong>
-  <%= @incidence.tipo %>
-</p>
+
 
 <p>
   <strong>Prioridad:</strong>
@@ -18,6 +15,19 @@
 <p>
   <strong>Comentario:</strong>
   <%= @incidence.comentario %>
+</p>
+<p>
+  <strong>Area:</strong>
+  <%= @incidence.area_id%>
+</p>
+<p>
+  <strong>Servicio:</strong>
+  <%= @incidence.service_id%>
+</p>
+<p>
+  <strong>Clientes:</strong>
+  <%= @incidence.client_id%>
+  <%= @incidence.client.contacto%>
 </p>
 
 <%= link_to 'Edit', edit_incidence_path(@incidence) %> |

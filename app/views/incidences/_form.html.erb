@@ -1,37 +1,53 @@
-<%= form_for(@incidence) do |f| %>
-  <% if @incidence.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@incidence.errors.count, "error") %> prohibited this incidence from being saved:</h2>
+<h3 class="titulo_form">Incidencias</h3>
+  <div class="card  darken-1">
+    <div class="card-content Black-text">
+      <%= form_for(@incidence) do |f| %>
+        <% if @incidence.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@incidence.errors.count, "error") %> prohibited this incidence from being saved:</h2>
 
-      <ul>
-      <% @incidence.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :service_id %><br>
-    <%= f.text_field :service_id %>
+            <ul>
+            <% @incidence.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="field">
+          <%= f.label :service_id %><br>
+          <%= f.collection_select(:service_id, @servicios, :id, :name, { prompt: "Seleccione el servicio" }) %>
+        </div>
+        <div class="field">
+          <%= f.hidden_field :area_id, :value => @area%>
+        </div>
+        <div class="row">
+          <div class="col s3"><%= f.label :prioridad,'Preoridad'%></div><br><br>
+            <div class="col s3">
+              <%= f.radio_button(:prioridad, 3)%>
+              <%= f.label :prioridad_3, 'Baja', class:'btn green'%>
+            </div>
+            <div class="col s3">
+              <%= f.radio_button(:prioridad, 2)%>
+              <%= f.label :prioridad_2, 'Media', class:'btn yellow darken-2' %>
+            </div>
+            <div class="col s3">
+              <%= f.radio_button(:prioridad, 1)%>
+              <%= f.label :prioridad_1, 'Alta',class:'btn red' %>
+            </div>
+          </div>
+        <div class="field">
+          <%= f.label :comentario %><br>
+          <%= f.text_area :comentario, class:'materialize-textarea', placeholder:'Ingresa una descripcion breve de la incidencia' %>
+        </div>
+        <br>
+        <div class="row card-action" style="margin-bottom:-20px;">
+          <div class="col s6">
+            <%= link_to 'Back', incidences_path, class:'btn '%>
+          </div>
+          <div class="col s6 right-align">
+            <%= f.submit 'Guardar', class:'btn'%>
+          </div>
+        </div>
+        <% end %>
+      </div>
   </div>
-  <div class="field">
-    <%= f.label :area_id %><br>
-    <%= f.text_field :area_id %>
-  </div>
-  <div class="field">
-    <%= f.label :prioridad %><br>
-    <%= f.text_field :prioridad %>
-  </div>
-  <div class="field">
-    <%= f.label :estado %><br>
-    <%= f.text_field :estado %>
-  </div>
-  <div class="field">
-    <%= f.label :comentario %><br>
-    <%= f.text_area :comentario %>
-  </div>
-  <br>
-  <div class="actions">
-    <%= f.submit 'Guardar', class:'btn' %>
-  </div>
-<% end %>

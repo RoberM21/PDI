@@ -21,7 +21,7 @@
       </div>
     </li>
   <%end%>
-  <%=link_to new_equipment_path, :href=>"#modal2" do%>
+  <%=link_to new_equipment_path(), :href=>"#modal2" do%>
     <li>
       <div class="">
         <img src="assets/media/image9" alt="" class:"responsive-img" width="150px"/>
@@ -30,6 +30,7 @@
       </div>
     </li>
   <%end%>
+  <%=link_to incidences_path do%>
     <li>
       <div class="">
         <img src="assets/media/image10" alt="" class:"responsive-img" width="150px"/>
@@ -38,6 +39,7 @@
       </div>
     </li>
     <li>
+  <%end%>
       <div class="">
         <img src="assets/media/image16" alt="" class:"responsive-img" width="150px"/>
         <h1>Incidencia</h1>
@@ -64,34 +66,23 @@
     <h4>Incidencias</h4>
     <p>
       <div class="row">
-        <div class="col s4">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title">Hardware</span>
-              <p>
-                soporte técnico a todo el hardware dentro de
-                las instalaciones correspondientes a cada uno
-                de los cliente.
-              </p>
-            </div>
-            <div class="card-action">
-              <%=link_to 'Agregar incidencia',incidences_path%>
-            </div>
-          </div>
-        </div>
-        <div class="col s4">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title">Redes</span>
-              <p>
-                Soporte técnico a todo lo referente a redes dentro de las instalaciones de los clientes de cada empresa
-              </p>
-            </div>
-            <div class="card-action">
-              <%=link_to 'Agregar incidencia',incidences_path%>
+        <%@area.each do |area|%>
+          <div class="col s4">
+            <div class="card blue-grey darken-1">
+              <div class="card-content white-text">
+                <span class="card-title"><%=area.name%></span>
+                <p>
+                  soporte técnico a todo el hardware dentro de
+                  las instalaciones correspondientes a cada uno
+                  de los cliente.
+                </p>
+              </div>
+              <div class="card-action">
+                <%=link_to 'Agregar incidencia',new_incidence_path(area_id: area.id)%>
+              </div>
             </div>
           </div>
-        </div>
+        <%end%>
       </div>
     </p>
   </div>

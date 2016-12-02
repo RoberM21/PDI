@@ -7,6 +7,7 @@ class ClientsController < ApplicationController
     @clients = Client.all
   end
   def perfil
+    @area = Area.all
     @clients = current_user.clients
   end
   # GET /clients/1
