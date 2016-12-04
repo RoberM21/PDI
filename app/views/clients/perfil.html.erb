@@ -11,7 +11,7 @@
   <br>
 </div>
 <div class="center">
-  <ul id="categories" class="clr">
+  <ul id="categories" class="clr" style="margin-left:370px;">
   <%=link_to  new_incidence_path, :href=>"#modal1" do%>
     <li>
       <div class="">
@@ -38,21 +38,25 @@
         <p>ver todas sus incidencias</p>
       </div>
     </li>
-    <li>
-  <%end%>
+    <%end%>
+    <%=link_to equipment_index_path() do%>
+    <li style="margin-left:89px; margin-top:-51px;">
       <div class="">
         <img src="assets/media/image16" alt="" class:"responsive-img" width="150px"/>
         <h1>Incidencia</h1>
         <p>ver todas sus incidencias</p>
       </div>
     </li>
-    <li>
+    <%end%>
+    <%=link_to equipment_index_path() do%>
+    <li style= "margin-top:-51px;">
       <div class="">
         <img src="assets/media/image19" alt="" class:"responsive-img" width="150px"/>
-        <h1>Incidencia</h1>
-        <p>ver todas sus incidencias</p>
+        <h1>Historia de cambios</h1>
+        <p>Cambios que se realizaton en el quipo</p>
       </div>
     </li>
+    <%end%>
   </ul>
 </div>
 <div id="modal2" class="modal">
@@ -63,14 +67,14 @@
 </div>
 <div id="modal1" class="modal">
   <div class="modal-content">
-    <h4>Incidencias</h4>
+    <h3 class="content">Incidencias</h3>
     <p>
       <div class="row">
         <%@area.each do |area|%>
           <div class="col s4">
             <div class="card blue-grey darken-1">
               <div class="card-content white-text">
-                <span class="card-title"><%=area.name%></span>
+                <span><%=area.name%></span><br>
                 <p>
                   soporte técnico a todo el hardware dentro de
                   las instalaciones correspondientes a cada uno
@@ -82,16 +86,16 @@
               </div>
             </div>
           </div>
-        <%end%>
+          <%end%>
       </div>
     </p>
   </div>
-  <div class="modal-footer">
-    <a href="#!" class=" modal-close waves-effect waves-green btn-flat">Cancelar</a>
-  </div>
+
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
  $('.modal').modal();
 });
+</script>
+
 </script>

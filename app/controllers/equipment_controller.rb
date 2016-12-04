@@ -1,6 +1,6 @@
 class EquipmentController < ApplicationController
   before_action :set_equipment, only: [:show, :edit, :update, :destroy]
-
+  before_action :authorize
   # GET /equipment
   # GET /equipment.json
   def index
@@ -15,6 +15,7 @@ class EquipmentController < ApplicationController
   # GET /equipment/new
   def new
     @equipment = Equipment.new
+    @area = Area.all
   end
 
   # GET /equipment/1/edit
@@ -69,6 +70,6 @@ class EquipmentController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def equipment_params
-      params.require(:equipment).permit(:marca, :tipo, :garantia, :entrada, :client_id)
+      params.require(:equipment).permit(:marca, :tipo, :garantia, :entrada, :client_id, :area_id)
     end
 end

@@ -10,4 +10,7 @@ class ApplicationController < ActionController::Base
   def authorize
     redirect_to '/login' unless current_user
   end
+  def client_perm
+    redirect_to '/perfil' unless current_user.rol == "root"
+  end
 end

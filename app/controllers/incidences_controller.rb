@@ -1,6 +1,5 @@
 class IncidencesController < ApplicationController
   before_action :set_incidence, only: [:show, :edit, :update, :destroy]
-
   # GET /incidences
   # GET /incidences.json
   def index
@@ -16,23 +15,30 @@ class IncidencesController < ApplicationController
   def new
     @incidence = Incidence.new
     @area = params[:area_id]
-    @servicios = Service.where(area_id: @area)
+    @servicios = Service.where(area_id: @area, prioridad: "3")
+    @equipo = Equipment.where(area_id: @area)
   end
 
   # GET /incidences/1/edit
   def edit
     @area = params[:area_id]
     @servicios = Service.where(area_id: @area)
+
   end
 
   # POST /incidences
   # POST /incidences.json
   def create
     @incidence = Incidence.new(incidence_params)
+    @hola = @incidence
+    if current_user.rol = "2"
     @incidence.client_id = current_user.clients.last.id
+    @incidence.estado = "Espera"
+    @hola = perfil_path
+    end
     respond_to do |format|
       if @incidence.save
-        format.html { redirect_to @incidence, notice: 'Incidence was successfully created.' }
+        format.html { redirect_to @hola, notice: 'Incidence was successfully created.' }
         format.json { render :show, status: :created, location: @incidence }
       else
         format.html { render :new }
@@ -73,6 +79,6 @@ class IncidencesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def incidence_params
-      params.require(:incidence).permit(:tipo, :prioridad, :estado, :comentario, :service_id, :area_id, :client_id, :technical_id)
+      params.require(:incidence).permit(:tipo, :prioridad, :estado, :comentario, :service_id, :area_id, :client_id, :technical_id, :equipment_id)
     end
 end

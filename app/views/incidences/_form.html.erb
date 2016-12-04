@@ -14,7 +14,11 @@
           </div>
         <% end %>
         <div class="field">
-          <%= f.label :service_id %><br>
+          <%= f.label :equipment_id, "Equipo" %><br>
+          <%= f.collection_select(:equipment_id, @equipo, :id, :codigo, { prompt: "Seleccione el equipo" }) %>
+        </div>
+        <div class="field">
+          <%= f.label :service_id, "Servicio" %><br>
           <%= f.collection_select(:service_id, @servicios, :id, :name, { prompt: "Seleccione el servicio" }) %>
         </div>
         <div class="field">

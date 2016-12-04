@@ -8,6 +8,16 @@
   <%= csrf_meta_tags %>
 </head>
 <% if current_user.blank? %>
+<nav class="blue-grey lighten-5">
+   <div class="nav-wrapper">
+     <a href="<%=welcome_index_path%>" class="brand-logo center"><%=image_tag("pdi.png",size: "150x60")%></a>
+     <ul id="nav-mobile" class="right hide-on-med-and-down">
+       <li class="right-align">
+         <%=link_to "Login",login_path, class:'btn blue-grey lighten-1'%>
+       </li>
+     </ul>
+   </div>
+ </nav>
   <% else %>
   <% if current_user.rol == "root" %>
   <nav class="blue darken-2">
@@ -39,7 +49,7 @@
   <nav class="cliente">
     <div class="nav-wrapper ">
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><%=link_to "Home", :root%></li>
+        <li><%=link_to "Home", perfil_path%></li>
         <% if current_user.blank? %>
         <li><%=link_to "Login", login_path%></li>
         <% else %>

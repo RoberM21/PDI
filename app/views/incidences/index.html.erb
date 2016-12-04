@@ -1,6 +1,8 @@
 <div class="container z-depth-3 panel">
   <h3 class=" titulo">Incidencia</h3>
+  <%if @current_user.rol == "root" %>
   <%= link_to 'Registrar', new_incidence_path, class:'btn bo' %>
+  <%end%>
     <table class="striped centered" id="my-table">
   <thead>
     <tr>
@@ -14,7 +16,14 @@
   <tbody>
     <% @incidences.each do |incidence| %>
       <tr>
-        <td><%= incidence.prioridad %></td>
+        <%case incidence.prioridad%>
+            <%when "1"%>
+              <td>Alta</td>
+            <%when "2"%>
+              <td>Media</td>
+            <%when "3"%>
+              <td>Baja</td>
+        <%end%>
         <td><%= incidence.estado %></td>
         <td><%= incidence.comentario %></td>
         <td>
