@@ -1,24 +1,49 @@
-<p id="notice"><%= notice %></p>
+<br>
+<div class="row white ">
+  <div class="col s3 card white darken-3" style="padding:0px;">
+    <div class="col s12  center"><br>
+      <%=image_tag(@client.avatar, size:"250x250")%>
+    </div>
+    <div class="col s12 center white">
+      <h5><%=@client.company%></h5>
+    </div>
+    <div class="col s12 center">
+      <strong>Contacto:</strong>
+      <p><%=@client.contacto%></p>
+    </div>
+    <div class="col s12 center">
+      <strong>Telefono:</strong>
+      <p><%=@client.telefono%></p>
+    </div>
+    <div class="col s12 center">
+      <strong>Correo:</strong>
+      <p><%=@client.user.email%></p><br>
+    </div>
+  </div>
+  <div class="col s9 white ">
+    <div class="card col s8">
+      <div class="card-content">
+        <span class="card-title">Registro de incidencias <br></span><br>
+        <p><%= area_chart Incidence.where(client_id: @client.id).group_by_hour(:created_at).count,download: true %></p>
+      </div>
+    </div>
+    <div class="card col s4">
+      <div class="card-content">
+        <span class="card-title">Total de incidencias</span>
+        <h2><%=@client.incidences.count%></h2>
+      </div>
+    </div>
+    <div class="card col s4">
+      <div class="card-content">
+        <span class="card-title">Equipo registrado</span>
+        <h2><%=@client.equipments.count%></h2>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Company:</strong>
-  <%= @client.company %>
-</p>
-
-<p>
-  <strong>Contacto:</strong>
-  <%= @client.contacto %>
-</p>
-
-<p>
-  <strong>Telefono:</strong>
-  <%= @client.telefono %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @client.user %>
-</p>
-
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+<script type="text/javascript">
+  $( document ).ready(function(){
+    $(".button-collapse").sideNav();
+  });
+</script>

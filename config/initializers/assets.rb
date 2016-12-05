@@ -11,3 +11,4 @@ Rails.application.config.assets.version = '1.0'
 #
 Rails.application.config.assets.precompile += %w( users.css.scss )
 Rails.application.config.assets.precompile += %w( incidences.js.coffee)
+Rails.application.config.assets.precompile += %w( clients.css )

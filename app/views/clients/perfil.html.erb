@@ -35,16 +35,16 @@
       <div class="">
         <img src="assets/media/image10" alt="" class:"responsive-img" width="150px"/>
         <h1>Incidencia</h1>
-        <p>ver todas sus incidencias</p>
+        <p>Todas sus incidencias</p>
       </div>
     </li>
     <%end%>
-    <%=link_to equipment_index_path() do%>
+    <%=link_to client_path(@current_user.clients.last.id) do%>
     <li style="margin-left:89px; margin-top:-51px;">
       <div class="">
         <img src="assets/media/image16" alt="" class:"responsive-img" width="150px"/>
         <h1>Incidencia</h1>
-        <p>ver todas sus incidencias</p>
+        <p>Registro de incidencias</p>
       </div>
     </li>
     <%end%>
@@ -59,6 +59,7 @@
     <%end%>
   </ul>
 </div>
+<br>
 <div id="modal2" class="modal">
   <div class="modal-content">
     <h4>Alta de equipos</h4>

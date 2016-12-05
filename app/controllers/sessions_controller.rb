@@ -6,7 +6,11 @@ class SessionsController < ApplicationController
 			 if user.email_confirmed
 				 cookies.signed[:user_id] = user.id
 				 session[:user_id] = user.id
-				 redirect_to '/perfil'
+         if current_user.rol=="root"
+				  redirect_to :root
+        else
+          redirect_to '/perfil'
+        end
 			 else
 				 flash[:error] = 'Activa tu cuenta mediante el email que se te acaba de enviar'
 				 redirect_to '/login'

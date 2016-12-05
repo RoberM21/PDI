@@ -4,7 +4,7 @@ class EquipmentController < ApplicationController
   # GET /equipment
   # GET /equipment.json
   def index
-    @equipment = Equipment.all
+    @equipment = @current_user.clients.last.equipments
   end
 
   # GET /equipment/1
@@ -27,6 +27,9 @@ class EquipmentController < ApplicationController
   def create
     @equipment = Equipment.new(equipment_params)
     @equipment.entrada = Time.current
+    if @current_user.rol == "1"
+      @equipment.client_id = @current_user.clients.last.id
+    end
     respond_to do |format|
       if @equipment.save
         format.html { redirect_to :back, notice: 'Equipment was successfully created.' }
@@ -70,6 +73,6 @@ class EquipmentController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def equipment_params
-      params.require(:equipment).permit(:marca, :tipo, :garantia, :entrada, :client_id, :area_id)
+      params.require(:equipment).permit(:marca, :tipo, :garantia, :entrada, :client_id, :area_id, :codigo)
     end
 end

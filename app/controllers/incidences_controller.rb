@@ -3,7 +3,12 @@ class IncidencesController < ApplicationController
   # GET /incidences
   # GET /incidences.json
   def index
-    @incidences = current_user.clients.last.incidences
+    if current_user.rol == "1"
+      @incidences = current_user.clients.last.incidences
+    else
+      @incidences = Incidence.all
+    end
+
   end
 
   # GET /incidences/1
@@ -16,7 +21,7 @@ class IncidencesController < ApplicationController
     @incidence = Incidence.new
     @area = params[:area_id]
     @servicios = Service.where(area_id: @area, prioridad: "3")
-    @equipo = Equipment.where(area_id: @area)
+    @equipo = Equipment.where(area_id: @area, client_id: current_user.clients.last.id)
   end
 
   # GET /incidences/1/edit

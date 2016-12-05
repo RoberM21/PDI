@@ -5,6 +5,7 @@
   <table class="striped centered" id="my-table">
     <thead>
       <tr>
+        <th>Codigo</th>
         <th>Marca</th>
         <th>Tipo</th>
         <th>Garantia</th>
@@ -15,6 +16,7 @@
     <tbody>
       <% @equipment.each do |equipment| %>
         <tr>
+          <td><%= equipment.codigo %></td>
           <td><%= equipment.marca %></td>
           <td><%= equipment.tipo %></td>
           <td><%= equipment.garantia %></td>
