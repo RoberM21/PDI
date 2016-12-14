@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-
-
 <p>
   <strong>Prioridad:</strong>
   <%= @incidence.prioridad %>
@@ -28,6 +26,11 @@
   <strong>Clientes:</strong>
   <%= @incidence.client_id%>
   <%= @incidence.client.contacto%>
+</p>
+<p>
+  <strong>tecnico:</strong>
+  <%= @incidence.technical_id%>
+  <%= @incidence.technical.name%>
 </p>
 
 <%= link_to 'Edit', edit_incidence_path(@incidence) %> |

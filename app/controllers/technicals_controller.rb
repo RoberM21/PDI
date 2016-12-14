@@ -12,6 +12,10 @@ class TechnicalsController < ApplicationController
   def show
   end
 
+  def incidencia
+    @technical = current_user.technicals
+    @incidences = Incidence.where(technical_id: @technical)
+  end
   # GET /technicals/new
   def new
     @technical = Technical.new
@@ -19,6 +23,8 @@ class TechnicalsController < ApplicationController
 
   # GET /technicals/1/edit
   def edit
+    @inciden = params[:hola]
+    @hola = Incidence.find(@inciden)
   end
 
   # POST /technicals
@@ -40,6 +46,7 @@ class TechnicalsController < ApplicationController
   # PATCH/PUT /technicals/1
   # PATCH/PUT /technicals/1.json
   def update
+    @technical.ststus = true
     respond_to do |format|
       if @technical.update(technical_params)
         format.html { redirect_to @technical, notice: 'Technical was successfully updated.' }

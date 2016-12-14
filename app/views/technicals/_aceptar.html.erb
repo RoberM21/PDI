@@ -1,0 +1,59 @@
+<script type="text/javascript">
+$(document).on('turbolinks:load', function() {
+  $('select').material_select();
+})
+</script>
+<%= form_for(@technical) do |f| %>
+  <% if @technical.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@technical.errors.count, "error") %> prohibited this technical from being saved:</h2>
+
+      <ul>
+      <% @technical.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%info = Incidence.where(technical_id: @technical, estado:"Asignada")%>
+  <br>
+  <h3>Informacio de la incidencia </h3>
+  <div>
+    <div class="row">
+        <div class="col s12 m6">
+          <div class="card white">
+            <div class="card-content black-text">
+              <span class="card-title">Contacto: <%=@hola.client.contacto%></span>
+              <p>
+              <strong>Prioridad:</strong>
+                <%case @hola.prioridad%>
+                    <%when "1"%>
+                      Alta
+                    <%when "2"%>
+                      Media
+                    <%when "3"%>
+                      Baja
+                <%end%>
+              </p>
+              <p><strong>Equipo: </strong><%=Equipment.find(@hola.equipment_id).codigo%></p>
+              <p><strong>Servicio: </strong><%=Service.find(@hola.service_id).name%></p>
+              <p><strong>Tiempo de resolucion: </strong><%=Service.find(@hola.service_id).resolucion.hour %> Horas </p><br>
+              <p><%=link_to "Agregar cambios", edit_equipment_path(Equipment.find(@hola.equipment_id)), class:"btn"%></p>
+              <br>
+              <div class="field row">
+                <div class="col s6"><%= f.check_box :ststus, value: true%><%= f.label :ststus,"Acepto" %></div>
+                <div class="col s6"><%= f.submit "Ok", class:'btn' %></div> <br>
+              </div>
+              <div class="actions">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div></div>
+  </div>
+
+
+<% end %>

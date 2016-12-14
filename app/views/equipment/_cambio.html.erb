@@ -1,0 +1,44 @@
+<h3 class="titulo_form">Incidencias</h3>
+  <div class="card  darken-1">
+    <div class="card-content Black-text">
+      <%= form_for(@equipment) do |f| %>
+        <% if @equipment.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@equipment.errors.count, "error") %> prohibited this equipment from being saved:</h2>
+
+            <ul>
+            <% @equipment.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="row">
+          <div class="field col s6">
+            <%= f.label :codigo, "Nombre" %><br>
+            <%= f.text_field :codigo ,disabled:"disabled"%>
+          </div>
+          <div class="field col s6">
+            <%= f.label :marca %><br>
+            <%= f.text_field :marca ,disabled:"disabled"%>
+          </div>
+          <div class="field col s6">
+            <%= f.label :tipo %><br>
+            <%= f.text_field :tipo ,disabled:"disabled"%>
+          </div>
+          <div class="field col s6">
+            <%= f.label :garantia %><br>
+            <%= f.text_field :garantia ,disabled:"disabled"%>
+          </div>
+          <div class="field col s12">
+            <%=f.label :cambio%> <br>
+            <%=f.text_field :cambio%>
+          </div>
+        </div>
+        <br>
+        <div class="right-align">
+          <%= f.submit 'Guardar', class:'btn' %>
+        </div>
+      <% end %>
+    </div>
+  </div>

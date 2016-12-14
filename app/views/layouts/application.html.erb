@@ -29,16 +29,33 @@
           <li><%=link_to "Login", login_path%></li>
           <% else %>
             <% if current_user.rol == "root" %>
-              <li><%=link_to "Usuarios", users_path%></li>
               <li><%=link_to "Técnicos", technicals_path%></li>
               <li><%=link_to "Clientes", clients_path%></li>
-              <li><%=link_to "Equipo", equipment_index_path%></li>
+
               <li><%=link_to "Incidencia", incidences_path%></li>
               <li><%=link_to "Areas" , areas_path%></li>
               <li><%=link_to "Servicios" , services_path%></li>
               <% else %>
                 <li><%= link_to "Perfil", perfil_path(current_user.clients.ids)%></li>
                 <li>Bienvenido: <%=current_user.email%></li>
+            <% end %>
+            <li><%= link_to "Salir", logout_path, method: :get, data: { confirm: 'Estas seguro?' }%></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+  <% end %>
+  <% if current_user.rol == "2" %>
+  <nav class="blue darken-2">
+      <div class="nav-wrapper ">
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><%=link_to "Home", :root%></li>
+          <% if current_user.blank? %>
+          <li><%=link_to "Login", login_path%></li>
+          <% else %>
+            <% if current_user.rol == "2" %>
+              <li><%=link_to "Perfil",technical_path(current_user.technicals.last.id) %></li>
+              <li><%=link_to "Incidencias", incide_path(current_user.clients.ids)%></li>
             <% end %>
             <li><%= link_to "Salir", logout_path, method: :get, data: { confirm: 'Estas seguro?' }%></li>
           <% end %>

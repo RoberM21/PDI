@@ -1,34 +1,51 @@
-<p id="notice"><%= notice %></p>
+<br>
+<div class="row white ">
+  <div class="col s3 card white darken-3" style="padding:0px;">
 
-<p>
-  <strong>Name:</strong>
-  <%= @technical.name %>
-</p>
+    <div class="col s12  center"><br>
+      <%=image_tag(@technical.avatar, size:"250x250")%>
+    </div>
+    <div class="col s12 center white">
+      <h5><%=@technical.name%></h5>
+    </div>
+    <div class="col s12 center">
+      <strong>Estado:</strong>
+      <p><%=@technical.ststus%></p>
+    </div>
+    <div class="col s12 center">
+      <strong>Hora de entrada:</strong>
+      <p><%=@technical.horaE%></p>
+    </div>
+    <div class="col s12 center">
+      <strong>Hora de salida:</strong>
+      <p><%=@technical.horaS%></p><br>
+    </div>
+  </div>
+  <div class="col s9 white ">
+    <div class="card col s8">
+      <div class="card-content">
+        <span class="card-title">Total de incidencias asiganadas<br></span><br>
+        <p><%= area_chart Incidence.where(technical_id: @technical.id, estado: "Asignada").group_by_hour(:updated_at).count,download: true %></p>
+      </div>
+    </div>
+    <div class="card col s4">
+      <div class="card-content">
+        <span class="card-title">Total de incidencias</span>
+        <h2><%=@technical.incidences.count%></h2>
+      </div>
+    </div>
 
-<p>
-  <strong>Ststus:</strong>
-  <%= @technical.ststus %>
-</p>
+  </div>
+</div>
 
-<p>
-  <strong>Especialidad:</strong>
-  <%= @technical.especialidad %>
-</p>
 
-<p>
-  <strong>Horae:</strong>
-  <%= @technical.horaE %>
-</p>
-
-<p>
-  <strong>Horas:</strong>
-  <%= @technical.horaS %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @technical.user %>
-</p>
-
-<%= link_to 'Edit', edit_technical_path(@technical) %> |
-<%= link_to 'Back', technicals_path %>
+<script type="text/javascript">
+  $( document ).ready(function(){
+    $(".button-collapse").sideNav();
+  });
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+ $('.modal').modal();
+});
+</script>

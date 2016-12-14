@@ -8,7 +8,6 @@ class IncidencesController < ApplicationController
     else
       @incidences = Incidence.all
     end
-
   end
 
   # GET /incidences/1
@@ -19,9 +18,12 @@ class IncidencesController < ApplicationController
   # GET /incidences/new
   def new
     @incidence = Incidence.new
-    @area = params[:area_id]
-    @servicios = Service.where(area_id: @area, prioridad: "3")
-    @equipo = Equipment.where(area_id: @area, client_id: current_user.clients.last.id)
+    if current_user.rol == "1"
+      @area = params[:area_id]
+      @equipo = Equipment.where(area_id: @area, client_id: current_user.clients.last.id)
+      @servicios = Service.where(area_id: @area, prioridad: "3")
+    end
+    @servicios = Service.where(prioridad: "3")
   end
 
   # GET /incidences/1/edit
@@ -55,15 +57,20 @@ class IncidencesController < ApplicationController
   # PATCH/PUT /incidences/1
   # PATCH/PUT /incidences/1.json
   def update
+    @incidence.estado = "Asignada"
     respond_to do |format|
       if @incidence.update(incidence_params)
-        format.html { redirect_to @incidence, notice: 'Incidence was successfully updated.' }
+        format.html { redirect_to incidences_path, notice: 'Incidence was successfully updated.' }
         format.json { render :show, status: :ok, location: @incidence }
       else
         format.html { render :edit }
         format.json { render json: @incidence.errors, status: :unprocessable_entity }
       end
     end
+  end
+  def finalizar
+    @incidence = "Finalizar"
+    @incidence.update(incidence2_params)
   end
 
   # DELETE /incidences/1
@@ -86,4 +93,8 @@ class IncidencesController < ApplicationController
     def incidence_params
       params.require(:incidence).permit(:tipo, :prioridad, :estado, :comentario, :service_id, :area_id, :client_id, :technical_id, :equipment_id)
     end
+    def incidence2_params
+      params.require(:incidence).permit(:estado)
+    end
+
 end

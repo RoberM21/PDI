@@ -4,7 +4,11 @@ class EquipmentController < ApplicationController
   # GET /equipment
   # GET /equipment.json
   def index
-    @equipment = @current_user.clients.last.equipments
+    if current_user.rol == "1"
+      @equipment = @current_user.clients.last.equipments
+    else
+      @equipment = Equipment.all
+    end
   end
 
   # GET /equipment/1
@@ -46,7 +50,7 @@ class EquipmentController < ApplicationController
   def update
     respond_to do |format|
       if @equipment.update(equipment_params)
-        format.html { redirect_to @equipment, notice: 'Equipment was successfully updated.' }
+        format.html { redirect_to incide_path, notice: 'Equipment was successfully updated.' }
         format.json { render :show, status: :ok, location: @equipment }
       else
         format.html { render :edit }
@@ -73,6 +77,6 @@ class EquipmentController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def equipment_params
-      params.require(:equipment).permit(:marca, :tipo, :garantia, :entrada, :client_id, :area_id, :codigo)
+      params.require(:equipment).permit(:marca, :tipo, :garantia, :entrada, :client_id, :area_id, :codigo, :cambio)
     end
 end

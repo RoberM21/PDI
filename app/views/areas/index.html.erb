@@ -4,8 +4,8 @@
     <table class="striped centered" id="my-table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
+      <th>Nombre</th>
+      <th>Acciones</th>
     </tr>
   </thead>
 
@@ -13,7 +13,7 @@
     <% @areas.each do |area| %>
       <tr>
         <td><%= area.name %></td>
-        <td><%= link_to 'Eliminar', area, method: :delete, data: { confirm: 'Are you sure?' },class:'btn red' %></td>
+        <td><%= link_to 'Eliminar', area, method: :delete, data: { confirm: 'Are you sure?' },class:'btn red'%> <%=link_to "Ver",area_path(area.id), class:'btn'%></td>
       </tr>
     <% end %>
   </tbody>

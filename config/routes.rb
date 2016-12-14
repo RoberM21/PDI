@@ -8,11 +8,13 @@ Rails.application.routes.draw do
   get 'welcome/index'
 
   resources :users
+  post '/incidences/:id', to: 'incidences#finalizar'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
   get '/perfil' => 'clients#perfil'
+  get '/incide' => 'technicals#incidencia'
   get '/newClient' => 'users#clientNew'
   get '/newTec' => 'users#tecNew'
   post '/clients/:id', to: 'clients#show', as: 'perfilC'

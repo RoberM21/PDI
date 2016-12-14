@@ -21,20 +21,17 @@
             <%when "3"%>
               <td>Baja</td>
         <%end%>
-        <%unless incidence.estado == "Finalizado"%>
-          <%case incidence.technical.ststus%>
-              <%when true%>
-                <td>Aceptada</td>
-              <%when false%>
-                <td>Asignada</td>
-          <%end%>
-        <%else%>
-          <td>Finalizado</td>
+        <%case incidence.technical.ststus%>
+            <%when true%>
+              <td>Aceptada</td>
+            <%when false%>
+              <td>Asignada</td>
+            <%when nil%>
+              <td>Asignada</td>
         <%end%>
         <td><%= incidence.comentario %></td>
         <td>
-          <%= link_to 'Asignar', edit_incidence_path(incidence,area_id: incidence.area_id), class:'btn'%>
-          <%= link_to 'Finalizar', incidence, method: :delete, data: { confirm: '¿Seguro de finalizar la incidenia?' },class:'btn red' %>
+          <%= link_to 'Ver', edit_technical_path(@technical.ids,hola:incidence.id), class:'btn'%>
         </td>
       </tr>
     <% end %>

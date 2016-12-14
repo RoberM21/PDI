@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 			 if user.email_confirmed
 				 cookies.signed[:user_id] = user.id
 				 session[:user_id] = user.id
-         if current_user.rol=="root"
+         if current_user.rol=="root" || current_user.rol = "2"
 				  redirect_to :root
         else
           redirect_to '/perfil'

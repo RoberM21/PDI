@@ -1,9 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @area.name %>
+  <%=Incidence.where(area_id: @area.id).count%>
 </p>
-
-<%= link_to 'Edit', edit_area_path(@area) %> |
-<%= link_to 'Back', areas_path %>
+<div class="col s12 white ">
+  <div class="card col s12">
+    <div class="card-content">
+      <span class="card-title">Registro de incidencias <br></span><br>
+      <p><%= area_chart Incidence.where(area_id: @area.id).group_by_hour(:created_at).count,download: true %></p>
+    </div>
+  </div>
+</div>
+<%= link_to 'Atras', areas_path, class:'btn' %>

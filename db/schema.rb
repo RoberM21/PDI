@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161204220044) do
+ActiveRecord::Schema.define(version: 20161214160958) do
 
   create_table "areas", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -39,11 +39,12 @@ ActiveRecord::Schema.define(version: 20161204220044) do
     t.string   "tipo",       limit: 255
     t.string   "garantia",   limit: 255
     t.date     "entrada"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.integer  "area_id",    limit: 4
     t.integer  "client_id",  limit: 4
     t.string   "codigo",     limit: 255
+    t.text     "cambio",     limit: 65535
   end
 
   create_table "incidences", force: :cascade do |t|
